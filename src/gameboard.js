@@ -3,6 +3,7 @@ import Ship from "./ship.js";
 class GameBoard {
     constructor() {
         this.grid = Array(10).fill().map(() => Array(10).fill());
+        this.displayGrid = Array(10).fill().map(() => Array(10).fill("-"));
         this.ships = [];
         this.numShipsSunk = 0;
 
@@ -60,6 +61,10 @@ class GameBoard {
                 this.numShipsSunk++;
             }
             this.grid[x][y] = -1;
+            this.displayGrid[x][y] = "X";
+        }
+        else{
+            this.displayGrid[x][y] = "O";
         }
         if (this.reportLoss()) {
             //do something
@@ -70,6 +75,8 @@ class GameBoard {
         return this.numShipsSunk == this.ships.length;
     }
 }
+
+export default GameBoard;
 
 // const game = new GameBoard();
 // console.log(game.grid);
