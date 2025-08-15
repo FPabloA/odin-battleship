@@ -54,8 +54,20 @@ class GameBoard {
         this.ships.push(new Ship(2));
     }
 
-    recieveHit () {
-        
+    recieveHit (x,y) {
+        if (this.grid[x][y]) {
+            if (this.grid[x][y].hit()){
+                this.numShipsSunk++;
+            }
+            this.grid[x][y] = -1;
+        }
+        if (this.reportLoss()) {
+            //do something
+        }
+    }
+
+    reportLoss () {
+        return this.numShipsSunk == this.ships.length;
     }
 }
 
