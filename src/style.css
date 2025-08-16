@@ -1,5 +1,9 @@
 body {
+    display: flex;
+    flex-direction: column;
     background-color: rebeccapurple;
+    align-items: center;
+    justify-content: center;
 }
 
 .player-board-area {
@@ -28,4 +32,9 @@ body {
     height: 60px;
     width: 60px;
     border: 2px black solid;
+    cursor: pointer;
+}
+
+.winner-banner {
+    font-size: 64px;
 }

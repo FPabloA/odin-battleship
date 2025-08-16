@@ -8,11 +8,12 @@ class Ship {
     hit () {
         this.timesHit++;
         this.isSunk();
+        return this.sunk;
     }
 
     isSunk () {
         if (this.timesHit == this.length) {
-            this.sunk = true;;
+            this.sunk = true;
         }
     }
 }

@@ -55,20 +55,21 @@ class GameBoard {
         this.ships.push(new Ship(2));
     }
 
-    recieveHit (x,y) {
-        if (this.grid[x][y]) {
-            if (this.grid[x][y].hit()){
+    receiveHit (x,y) {
+        if (this.grid[y][x]) {
+            if (this.grid[y][x].hit()){
                 this.numShipsSunk++;
             }
-            this.grid[x][y] = -1;
-            this.displayGrid[x][y] = "X";
+            this.displayGrid[y][x] = "X";
         }
         else{
-            this.displayGrid[x][y] = "O";
+            this.displayGrid[y][x] = "O";
         }
+        this.grid[y][x] = -1;
         if (this.reportLoss()) {
-            //do something
+            return true;
         }
+        return false;
     }
 
     reportLoss () {
